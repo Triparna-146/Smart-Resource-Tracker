@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable</title>
+    <style>
+        /* Body styles */
+        .header1{
+           background-color: blue;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Taskbar styles */
+        .taskbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #2196F3;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .taskbar button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #fff;
+            color: #2196F3;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .taskbar button:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Table styles */
+        .timetable-container {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .timetable-container th,
+        .timetable-container td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .timetable-container th:first-child,
+        .timetable-container td:first-child {
+            text-align: center;
+        }
+
+        .timetable-container th:last-child,
+        .timetable-container td:last-child {
+            text-align: center;
+        }
+
+        /* Alternate row color */
+        .timetable-container tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Taskbar with buttons -->
+    <div class="taskbar">
+        <button>Classes</button>
+        <form method="get" action="/login/labs">
+            <button>Labs</button>
+        </form>
+        <form method="get" action="/login/editpasswd">
+            <button>Change password</button>
+        </form>
+    </div>
+
+    <!-- Table displaying timetable -->
+    <table class="timetable-container">
+       
+        <tbody>
+                <tr>
+                    <th style="width: 10%;">Class no.</th>
+                    <th style="width: 10%;">Day</th>
+                    <th style="width: 15%;">Department</th>
+                    <th style="width: 15%;">Faculty name</th>
+                    <th style="width: 15%;">Subject</th>
+                    <th style="width: 10%;">Start</th>
+                    <th style="width: 10%;">End</th>
+                </tr>
+                <% for (let user of result) { %>
+                    <tr>
+                        <td><%= user.class_no %></td>
+                        <td><%= user.day %></td>
+                        <td><%= user.dept %></td>
+                        <td><%= user.faculty %></td>
+                        <td><%= user.subject %></td>
+                        <td><%= user.start_time %></td>
+                        <td><%= user.end_time %></td>
+                    </tr>
+                <% } %>
+            </table>
+        </tbody>
+           
+
+</body>
+</html>
